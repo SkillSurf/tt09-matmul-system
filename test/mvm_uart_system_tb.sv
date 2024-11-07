@@ -28,7 +28,7 @@ module mvm_uart_system_tb;
   assign ui_in[0] = rx;
   assign tx = uo_out[0];
 
-  tt_um_uart_mvm dut (
+  tt_um_uart_mvm_sys dut (
     .ui_in  (ui_in  ),    // Dedicated inputs
     .uo_out (uo_out ),    // Dedicated outputs
     .uio_in (uio_in ),    // IOs: Input path

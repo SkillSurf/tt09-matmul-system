@@ -263,7 +263,7 @@ v0x55937556b9a0_0 .var/2s "r", 31 0;
 S_0x55937556b6a0 .scope begin, "$ivl_foreach1" "$ivl_foreach1" 4 109, 4 109 0, S_0x55937556b470;
  .timescale -9 -12;
 v0x55937556b8a0_0 .var/2s "c", 31 0;
-S_0x55937556baa0 .scope module, "dut" "tt_um_uart_mvm" 4 31, 5 8 0, S_0x55937554b100;
+S_0x55937556baa0 .scope module, "dut" "tt_um_uart_mvm_sys" 4 31, 5 8 0, S_0x55937554b100;
  .timescale 0 0;
     .port_info 0 /INPUT 8 "ui_in";
     .port_info 1 /OUTPUT 8 "uo_out";
