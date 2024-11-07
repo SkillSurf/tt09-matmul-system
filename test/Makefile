@@ -35,8 +35,8 @@ endif
 VERILOG_SOURCES += $(PWD)/mvm_uart_system_tb.sv $(PWD)/simple_axis_tb.sv
 TOPLEVEL = mvm_uart_system_tb
 
-clean:
-	rm -f compiled *.vcd
-
 test: 
 	iverilog -g2012 -o compiled $(VERILOG_SOURCES) && ./compiled
+
+clean:
+	rm -f compiled *.vcd
