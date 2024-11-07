@@ -14,4 +14,15 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y iverilog
 
       - name: Run tests
-        run: iverilog -g2012 -o compiled src/mvm_uart_system.v src/uart_rx.v src/uart_tx.v src/axis_matvec_mul.v src/matvec_mul.v src/skid_buffer.v test/mvm_uart_system_tb.sv test/simple_axis_tb.sv src/project.v && ./compiled
+        run: |
+          cd test
+          make clean
+          make
+
+      - name: upload vcd
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-vcd
+          path: |
+            test/tb.vcd

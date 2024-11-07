@@ -5,7 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v, axis_matvec_mul.v, matvec_mul.v, mvm_uart_system.v, skid_buffer.v, uart_rx.v, uart_tx.v
+PROJECT_SOURCES = project.v axis_matvec_mul.v matvec_mul.v mvm_uart_system.v skid_buffer.v uart_rx.v uart_tx.v
 
 ifneq ($(GATES),yes)
 
@@ -32,11 +32,8 @@ VERILOG_SOURCES += $(PWD)/gate_level_netlist.v
 endif
 
 # Include the testbench sources:
-VERILOG_SOURCES += $(PWD)/tb.v
-TOPLEVEL = tb
+VERILOG_SOURCES += $(PWD)/mvm_uart_system_tb.sv $(PWD)/simple_axis_tb.sv
+TOPLEVEL = mvm_uart_system_tb
 
-# MODULE is the basename of the Python test file
-MODULE = test
-
-# include cocotb's make rules to take care of the simulator setup
-include $(shell cocotb-config --makefiles)/Makefile.sim
+test: 
+	iverilog -g2012 -o compiled $(VERILOG_SOURCES) && ./compiled

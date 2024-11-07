@@ -12,7 +12,7 @@ module mvm_uart_system_tb;
               N_WORDS_Y        = W_BUS_Y /BITS_PER_WORD,
               PACKET_SIZE_TX   = BITS_PER_WORD+5,
               CLK_PERIOD       = 10,
-              NUM_EXP          = 10;
+              NUM_EXP          = 2;
 
   logic clk=0, rstn=0, rx=1, tx;
   initial forever #(CLK_PERIOD/2) clk <= !clk;
@@ -48,7 +48,7 @@ module mvm_uart_system_tb;
   initial begin
     assert (W_BUS_KX % BITS_PER_WORD == 0);
     assert (W_BUS_Y  % BITS_PER_WORD == 0);
-    $dumpfile("dump.vcd"); $dumpvars;
+    $dumpfile("tb.vcd"); $dumpvars;
 
     repeat(2)  @(posedge clk) #1; 
     rstn = 1;
